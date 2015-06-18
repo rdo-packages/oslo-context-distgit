@@ -3,7 +3,7 @@
 
 Name:           python-oslo-context
 Version:        0.2.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        OpenStack Oslo Context library
 
 License:        ASL 2.0
@@ -73,6 +73,9 @@ dos2unix doc/build/html/_static/jquery.js
 %license LICENSE
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Fri Mar 27 2015 Chandan Kumar <chkumar246@gmail.com> - 0.2.0-5
 - Fixed Doc issue and added missing dependencies
 
