@@ -15,9 +15,7 @@ BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 
-Requires:       python-setuptools
 Requires:       python-babel
-Requires:       pytz
 
 %description
 The OpenStack Oslo context library has helpers to maintain
@@ -31,46 +29,35 @@ Summary:        Documentation for the OpenStack Oslo context library
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
 BuildRequires:  python-fixtures
-BuildRequires:  dos2unix
 
 %description doc
 Documentation for the OpenStack Oslo context library.
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-# Let RPM handle the dependencies
-sed -i '/setup_requires/d; /install_requires/d; /dependency_links/d' setup.py
-
-# make doc build compatible with python-oslo-sphinx RPM
-sed -i 's/oslosphinx/oslo.sphinx/' doc/source/conf.py
-
-rm -f {test-,}requirements.txt
+rm -f requirements.txt
 
 %build
 %{__python2} setup.py build
 # doc
 export PYTHONPATH="$( pwd ):$PYTHONPATH"
-pushd doc
-sphinx-build -b html -d build/doctrees   source build/html
-popd
-# Fix hidden-file-or-dir warnings
-rm -fr doc/build/html/.buildinfo
+%{__python2} setup.py build_sphinx
+
+# Remove the sphinx-build leftovers
+rm -fr doc/build/html/.{doctrees,buildinfo}
 
 %install
 %{__python2} setup.py install --skip-build --root %{buildroot}
-dos2unix doc/build/html/_static/jquery.js
 
 %files
 %license LICENSE
-%doc AUTHORS CONTRIBUTING.rst README.rst PKG-INFO ChangeLog
+%doc README.rst
 %{python2_sitelib}/oslo_context
-%{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
+%{python2_sitelib}/*.egg-info
 
 %files doc
-%doc doc/build/html
 %license LICENSE
+%doc doc/build/html
 
 %changelog
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.0-6
