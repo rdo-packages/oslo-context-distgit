@@ -2,8 +2,8 @@
 %global pypi_name oslo.context
 
 Name:           python-oslo-context
-Version:        0.2.0
-Release:        6%{?dist}
+Version:        0.4.0
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Context library
 
 License:        ASL 2.0
@@ -60,6 +60,9 @@ rm -fr doc/build/html/.{doctrees,buildinfo}
 %doc doc/build/html
 
 %changelog
+* Mon Jun 29 2015 Alan Pevec <alan.pevec@redhat.com> 0.4.0-1
+- Update to upstream 0.4.0
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.0-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
