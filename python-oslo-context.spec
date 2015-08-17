@@ -2,7 +2,7 @@
 %global pypi_name oslo.context
 
 Name:           python-oslo-context
-Version:        0.4.0
+Version:        0.5.0
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Context library
 
@@ -60,6 +60,9 @@ rm -fr doc/build/html/.{doctrees,buildinfo}
 %doc doc/build/html
 
 %changelog
+* Mon Aug 17 2015 Alan Pevec <alan.pevec@redhat.com> 0.5.0-1
+- Update to upstream 0.5.0
+
 * Mon Jun 29 2015 Alan Pevec <alan.pevec@redhat.com> 0.4.0-1
 - Update to upstream 0.4.0
 
