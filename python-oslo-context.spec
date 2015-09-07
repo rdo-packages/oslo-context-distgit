@@ -9,7 +9,7 @@
 
 Name:           python-oslo-context
 Version:        0.5.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OpenStack Oslo Context library
 
 License:        ASL 2.0
@@ -24,33 +24,42 @@ useful information about a request context.
 The request context is usually populated in the
 WSGI pipeline and used by various modules such as logging.
 
-%package -n python2-%{pypi_name}
+%package -n python2-oslo-context
 Summary:        OpenStack Oslo Context library
 %{?python_provide:%python_provide python2-%{pypi_name}}
+# python_provide does not exist in CBS Cloud buildroot
+Provides:       python-oslo-context = %{version}-%{release}
+Obsoletes:      python-oslo-context < 0.5.0-3
+
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 
 Requires:       python-babel
 
-%description -n python2-%{pypi_name}
+%description -n python2-oslo-context
 The OpenStack Oslo context library has helpers to maintain
 useful information about a request context.
 The request context is usually populated in the
 WSGI pipeline and used by various modules such as logging.
 
-%package -n python2-%{pypi_name}-doc
+%package -n python2-oslo-context-doc
 Summary:        Documentation for the OpenStack Oslo context library
+%{?python_provide:%python_provide python2-%{pypi_name}-doc
+# python_provide does not exist in CBS Cloud buildroot
+Provides:       python-oslo-context-doc = %{version}-%{release}
+Obsoletes:      python-oslo-context-doc < 0.5.0-3
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
 BuildRequires:  python-fixtures
 
-%description -n python2-%{pypi_name}-doc
+%description -n python2-oslo-context-doc
+
 Documentation for the OpenStack Oslo context library.
 
 # python3
 %if 0%{?with_python3}
-%package -n python3-%{pypi_name}
+%package -n python3-oslo-context
 Summary:        OpenStack Oslo Context library
 %{?python_provide:%python_provide python3-%{pypi_name}}
 BuildRequires:  python3-devel
@@ -58,20 +67,20 @@ BuildRequires:  python3-pbr
 
 Requires:       python3-babel
 
-%description -n python3-%{pypi_name}
+%description -n python3-oslo-context
 The OpenStack Oslo context library has helpers to maintain
 useful information about a request context.
 The request context is usually populated in the
 WSGI pipeline and used by various modules such as logging.
 
-%package -n python3-%{pypi_name}-doc
+%package -n python3-oslo-context-doc
 Summary:        Documentation for the OpenStack Oslo context library
 %{?python_provide:%python_provide python3-%{pypi_name}}
 BuildRequires:  python3-sphinx
 BuildRequires:  python3-oslo-sphinx
 BuildRequires:  python3-fixtures
 
-%description -n python3-%{pypi_name}-doc
+%description -n python3-oslo-context-doc
 Documentation for the OpenStack Oslo context library.
 %endif
 
@@ -105,31 +114,35 @@ rm -fr doc/build/html/.buildinfo
 %{__python3} setup.py install --skip-build --root %{buildroot}
 %endif
 
-%files -n python2-%{pypi_name}
+%files -n python2-oslo-context
 %license LICENSE
 %doc README.rst
 %{python2_sitelib}/oslo_context
 %{python2_sitelib}/*.egg-info
 
 %if 0%{?with_python3}
-%files -n python3-%{pypi_name}
+%files -n python3-oslo-context
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/oslo_context
 %{python3_sitelib}/*.egg-info
 %endif
 
-%files -n python2-%{pypi_name}-doc
+%files -n python2-oslo-context-doc
 %license LICENSE
 %doc doc/build/html
 
 %if 0%{?with_python3}
-%files -n python3-%{pypi_name}-doc
+%files -n python3-oslo-context-doc
 %license LICENSE
 %doc doc/build/html
 %endif
 
 %changelog
+* Mon Sep 07 2015 Chandan Kumar <chkumar246@gmail.com> 0.5.0-3
+- fix obseletes
+- fix package namespaces
+
 * Thu Sep 03 2015 Chandan Kumar <chkumar246@gmail.com> 0.5.0-2
 - Added python2 and python3 subpackages
 
