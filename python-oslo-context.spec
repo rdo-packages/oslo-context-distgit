@@ -43,8 +43,8 @@ The request context is usually populated in the
 WSGI pipeline and used by various modules such as logging.
 
 %package -n python2-oslo-context-doc
-Summary:        Documentation for the OpenStack Oslo context library
-%{?python_provide:%python_provide python2-%{pypi_name}-doc
+Summary:    Documentation for the OpenStack Oslo context library
+%{?python_provide:%python_provide python2-%{pypi_name}-doc}
 # python_provide does not exist in CBS Cloud buildroot
 Provides:       python-oslo-context-doc = %{version}-%{release}
 Obsoletes:      python-oslo-context-doc < 0.5.0-3
