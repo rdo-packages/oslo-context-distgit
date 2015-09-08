@@ -1,4 +1,5 @@
 %global pypi_name oslo.context
+%global pname oslo-context
 %{!?_licensedir:%global license %%doc}
 
 %if 0%{?fedora}
@@ -9,7 +10,7 @@
 
 Name:           python-oslo-context
 Version:        0.5.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        OpenStack Oslo Context library
 
 License:        ASL 2.0
@@ -26,10 +27,7 @@ WSGI pipeline and used by various modules such as logging.
 
 %package -n python2-oslo-context
 Summary:        OpenStack Oslo Context library
-%{?python_provide:%python_provide python2-%{pypi_name}}
-# python_provide does not exist in CBS Cloud buildroot
-Provides:       python-oslo-context = %{version}-%{release}
-Obsoletes:      python-oslo-context < 0.5.0-3
+%{?python_provide:%python_provide python2-%{pname}}
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
@@ -44,10 +42,7 @@ WSGI pipeline and used by various modules such as logging.
 
 %package -n python2-oslo-context-doc
 Summary:    Documentation for the OpenStack Oslo context library
-%{?python_provide:%python_provide python2-%{pypi_name}-doc}
-# python_provide does not exist in CBS Cloud buildroot
-Provides:       python-oslo-context-doc = %{version}-%{release}
-Obsoletes:      python-oslo-context-doc < 0.5.0-3
+%{?python_provide:%python_provide python2-%{pname}-doc}
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
@@ -61,7 +56,7 @@ Documentation for the OpenStack Oslo context library.
 %if 0%{?with_python3}
 %package -n python3-oslo-context
 Summary:        OpenStack Oslo Context library
-%{?python_provide:%python_provide python3-%{pypi_name}}
+%{?python_provide:%python_provide python3-%{pname}}
 BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
 
@@ -75,7 +70,7 @@ WSGI pipeline and used by various modules such as logging.
 
 %package -n python3-oslo-context-doc
 Summary:        Documentation for the OpenStack Oslo context library
-%{?python_provide:%python_provide python3-%{pypi_name}}
+%{?python_provide:%python_provide python3-%{pname}}
 BuildRequires:  python3-sphinx
 BuildRequires:  python3-oslo-sphinx
 BuildRequires:  python3-fixtures
@@ -139,6 +134,9 @@ rm -fr doc/build/html/.buildinfo
 %endif
 
 %changelog
+* Tue Sep 08 2015 Haïkel Guémar <hguemar@fedoraproject.org> - 0.5.0-4
+- Fix provides and drop workarounds
+
 * Mon Sep 07 2015 Chandan Kumar <chkumar246@gmail.com> 0.5.0-3
 - fix obseletes
 - fix package namespaces
