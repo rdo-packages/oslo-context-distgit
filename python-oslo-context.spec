@@ -10,7 +10,7 @@
 
 Name:           python-oslo-context
 Version:        0.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Oslo Context library
 
 License:        ASL 2.0
@@ -134,6 +134,9 @@ rm -fr doc/build/html/.buildinfo
 %endif
 
 %changelog
+* Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
+
 * Fri Sep 18 2015 Alan Pevec <alan.pevec@redhat.com> 0.6.0-1
 - Update to upstream 0.6.0
 
