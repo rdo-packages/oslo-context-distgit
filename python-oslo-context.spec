@@ -9,7 +9,7 @@
 
 Name:           python-%{pkg_name}
 Version:        2.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Oslo Context library
 
 License:        ASL 2.0
@@ -81,6 +81,16 @@ WSGI pipeline and used by various modules such as logging.
 
 %endif
 
+%if 0%{?with_python3}
+%package -n python3-%{pkg_name}-tests
+Summary:   Tests for OpenStack Oslo context library
+
+Requires:  python3-%{pkg_name} = %{version}-%{release}
+
+%description -n python3-%{pkg_name}-tests
+Tests for OpenStack Oslo context library
+%endif
+
 %description
 The OpenStack Oslo context library has helpers to maintain
 useful information about a request context.
@@ -142,7 +152,17 @@ rm -rf .testrepository
 %files -n python-%{pkg_name}-tests
 %license LICENSE
 %{python2_sitelib}/oslo_context/tests
+
+%if 0%{?with_python3}
+%files -n python3-%{pkg_name}-tests
+%license LICENSE
+%{python3_sitelib}/oslo_context/tests
+%endif
+
 %changelog
-* Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.2.0-
+* Fri Jun 03 2016 Charalampos Stratakis <cstratak@redhat.com> 2.2.0-2
+- Provide a python 3 tests subpackage
+
+* Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.2.0-1
 - Update to 2.2.0
 
