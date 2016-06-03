@@ -79,6 +79,16 @@ WSGI pipeline and used by various modules such as logging.
 
 %endif
 
+%if 0%{?with_python3}
+%package -n python3-%{pkg_name}-tests
+Summary:   Tests for OpenStack Oslo context library
+
+Requires:  python3-%{pkg_name} = %{version}-%{release}
+
+%description -n python3-%{pkg_name}-tests
+Tests for OpenStack Oslo context library
+%endif
+
 %description
 The OpenStack Oslo context library has helpers to maintain
 useful information about a request context.
@@ -140,4 +150,12 @@ rm -rf .testrepository
 %files -n python-%{pkg_name}-tests
 %license LICENSE
 %{python2_sitelib}/oslo_context/tests
+
+%if 0%{?with_python3}
+%files -n python3-%{pkg_name}-tests
+%license LICENSE
+%{python3_sitelib}/oslo_context/tests
+%endif
+
 %changelog
+
