@@ -30,6 +30,7 @@ BuildRequires:  python-coverage
 
 Requires:       python-babel
 Requires:       python-pbr
+Requires:       python-positional
 
 %description -n python2-%{pkg_name}
 The OpenStack Oslo context library has helpers to maintain
@@ -40,6 +41,7 @@ WSGI pipeline and used by various modules such as logging.
 %package -n python-%{pkg_name}-tests
 Summary:   Tests for OpenStack Oslo context library
 
+BuildRequires:  python-positional
 Requires:  python-%{pkg_name} = %{version}-%{release}
 
 %description -n python-%{pkg_name}-tests
@@ -70,6 +72,7 @@ BuildRequires:  python3-coverage
 
 Requires:       python3-babel
 Requires:       python3-pbr
+Requires:       python3-positional
 
 %description -n python3-%{pkg_name}
 The OpenStack Oslo context library has helpers to maintain
@@ -83,6 +86,7 @@ WSGI pipeline and used by various modules such as logging.
 %package -n python3-%{pkg_name}-tests
 Summary:   Tests for OpenStack Oslo context library
 
+BuildRequires:  python3-positional
 Requires:  python3-%{pkg_name} = %{version}-%{release}
 
 %description -n python3-%{pkg_name}-tests
@@ -159,3 +163,4 @@ rm -rf .testrepository
 
 %changelog
 
+# REMOVEME: error caused by commit 
