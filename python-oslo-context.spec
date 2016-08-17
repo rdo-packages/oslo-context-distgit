@@ -27,8 +27,10 @@ BuildRequires:  python-pbr
 BuildRequires:  python-hacking
 BuildRequires:  python-oslotest
 BuildRequires:  python-coverage
+BuildRequires:  python-positional
 
 Requires:       python-babel
+Requires:       python-positional
 Requires:       python-pbr
 
 %description -n python2-%{pkg_name}
@@ -67,8 +69,10 @@ BuildRequires:  python3-pbr
 BuildRequires:  python3-hacking
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-coverage
+BuildRequires:  python3-positional
 
 Requires:       python3-babel
+Requires:       python3-positional
 Requires:       python3-pbr
 
 %description -n python3-%{pkg_name}
@@ -158,4 +162,3 @@ rm -rf .testrepository
 %endif
 
 %changelog
-
