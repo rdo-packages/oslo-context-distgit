@@ -8,8 +8,8 @@
 %endif
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        2.9.0
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Context library
 
 License:        ASL 2.0
@@ -164,3 +164,6 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Wed Sep 07 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.9.0-1
+- Update to 2.9.0
+
