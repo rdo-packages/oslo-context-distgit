@@ -11,8 +11,8 @@ Release:        XXX
 Summary:        OpenStack Oslo Context library
 
 License:        ASL 2.0
-URL:            https://pypi.python.org/pypi/oslo.context
-Source0:        https://pypi.python.org/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+URL:            https://launchpad.net/oslo.context
+Source0:        https://pypi.io/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
