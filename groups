@@ -1,6 +1,6 @@
 # UUID                                  	Group Name
 #
 3e495472a3baafad6fe4753145d46cb535e88c70	openstack/oslo-context-distgit-ptl
-bcf59421c6b2428b6459d5cdfa68b8c966627daf	openstack/oslo-context-distgit-core
 63673ea7f2ae6a5666566b1ea9f14e473d00f5a9	rdo-core
+bcf59421c6b2428b6459d5cdfa68b8c966627daf	openstack/oslo-context-distgit-core
 global:Registered-Users                 	Registered Users
