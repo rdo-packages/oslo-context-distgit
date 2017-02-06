@@ -32,6 +32,7 @@ BuildRequires:  python-coverage
 BuildRequires:  python-positional
 
 Requires:       python-babel
+Requires:       python-debtcollector
 Requires:       python-positional
 Requires:       python-pbr
 
@@ -74,6 +75,7 @@ BuildRequires:  python3-coverage
 BuildRequires:  python3-positional
 
 Requires:       python3-babel
+Requires:       python3-debtcollector
 Requires:       python3-positional
 Requires:       python3-pbr
 
