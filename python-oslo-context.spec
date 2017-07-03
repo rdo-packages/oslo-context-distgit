@@ -24,6 +24,7 @@ Summary:        OpenStack Oslo Context library
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
+BuildRequires:  git
 
 # test dependencies
 BuildRequires:  python-hacking
@@ -54,7 +55,7 @@ Tests for OpenStack Oslo context library
 Summary:        Documentation for the OpenStack Oslo context library
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-openstackdocstheme
 BuildRequires:  python-fixtures
 
 %description -n python-%{pkg_name}-doc
@@ -104,7 +105,7 @@ The request context is usually populated in the
 WSGI pipeline and used by various modules such as logging.
 
 %prep
-%setup -q -n %{pypi_name}-%{upstream_version}
+%autosetup -n %{pypi_name}-%{upstream_version} -S git
 rm -f requirements.txt
 
 %build
