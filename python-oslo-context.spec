@@ -112,7 +112,6 @@ rm -f requirements.txt
 %py2_build
 
 # doc
-export PYTHONPATH="$( pwd ):$PYTHONPATH"
 %{__python2} setup.py build_sphinx
 # Remove the sphinx-build leftovers
 rm -fr doc/build/html/.{doctrees,buildinfo}
