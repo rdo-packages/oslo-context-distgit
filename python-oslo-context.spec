@@ -29,7 +29,6 @@ BuildRequires:  git
 # test dependencies
 BuildRequires:  python-hacking
 BuildRequires:  python-oslotest
-BuildRequires:  python-coverage
 BuildRequires:  python-positional
 
 Requires:       python-babel
@@ -72,7 +71,6 @@ BuildRequires:  python3-pbr
 # test dependencies
 BuildRequires:  python3-hacking
 BuildRequires:  python3-oslotest
-BuildRequires:  python3-coverage
 BuildRequires:  python3-positional
 
 Requires:       python3-babel
