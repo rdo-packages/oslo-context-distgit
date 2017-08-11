@@ -8,8 +8,8 @@
 %endif
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        2.17.0
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Context library
 
 License:        ASL 2.0
@@ -166,3 +166,6 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Fri Aug 11 2017 Alfredo Moralejo <amoralej@redhat.com> 2.17.0-1
+- Update to 2.17.0
+
