@@ -2,6 +2,12 @@
 
 %global pypi_name oslo.context
 %global pkg_name oslo-context
+%global common_desc \
+The OpenStack Oslo context library has helpers to maintain \
+useful information about a request context.
+
+%global common_desc1 \
+Tests for OpenStack Oslo context library.
 
 %if 0%{?fedora} >= 24
 %global with_python3 1
@@ -38,8 +44,7 @@ Requires:       python-positional
 Requires:       python-pbr
 
 %description -n python2-%{pkg_name}
-The OpenStack Oslo context library has helpers to maintain
-useful information about a request context.
+%{common_desc}
 The request context is usually populated in the
 WSGI pipeline and used by various modules such as logging.
 
@@ -49,7 +54,7 @@ Summary:   Tests for OpenStack Oslo context library
 Requires:  python-%{pkg_name} = %{version}-%{release}
 
 %description -n python-%{pkg_name}-tests
-Tests for OpenStack Oslo context library
+%{common_desc1}
 
 %package -n python-%{pkg_name}-doc
 Summary:        Documentation for the OpenStack Oslo context library
@@ -81,8 +86,8 @@ Requires:       python3-positional
 Requires:       python3-pbr
 
 %description -n python3-%{pkg_name}
-The OpenStack Oslo context library has helpers to maintain
-useful information about a request context.
+%{common_desc}
+
 The request context is usually populated in the
 WSGI pipeline and used by various modules such as logging.
 
@@ -95,12 +100,11 @@ Summary:   Tests for OpenStack Oslo context library
 Requires:  python3-%{pkg_name} = %{version}-%{release}
 
 %description -n python3-%{pkg_name}-tests
-Tests for OpenStack Oslo context library
+%{common_desc1}
 %endif
 
 %description
-The OpenStack Oslo context library has helpers to maintain
-useful information about a request context.
+%{common_desc}
 The request context is usually populated in the
 WSGI pipeline and used by various modules such as logging.
 
