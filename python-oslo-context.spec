@@ -7,6 +7,15 @@
 %global with_python3 1
 %endif
 
+%global common_desc \
+The OpenStack Oslo context library has helpers to maintain \
+useful information about a request context. \
+The request context is usually populated in the \
+WSGI pipeline and used by various modules such as logging.
+
+%global common_desc2 \
+Tests for OpenStack Oslo context library
+
 Name:           python-%{pkg_name}
 Version:        XXX
 Release:        XXX
@@ -37,10 +46,7 @@ Requires:       python-positional
 Requires:       python-pbr
 
 %description -n python2-%{pkg_name}
-The OpenStack Oslo context library has helpers to maintain
-useful information about a request context.
-The request context is usually populated in the
-WSGI pipeline and used by various modules such as logging.
+%{common_desc}
 
 %package -n python-%{pkg_name}-tests
 Summary:   Tests for OpenStack Oslo context library
@@ -48,7 +54,7 @@ Summary:   Tests for OpenStack Oslo context library
 Requires:  python-%{pkg_name} = %{version}-%{release}
 
 %description -n python-%{pkg_name}-tests
-Tests for OpenStack Oslo context library
+%{common_desc2}
 
 %package -n python-%{pkg_name}-doc
 Summary:        Documentation for the OpenStack Oslo context library
@@ -79,10 +85,7 @@ Requires:       python3-positional
 Requires:       python3-pbr
 
 %description -n python3-%{pkg_name}
-The OpenStack Oslo context library has helpers to maintain
-useful information about a request context.
-The request context is usually populated in the
-WSGI pipeline and used by various modules such as logging.
+%{common_desc}
 
 %endif
 
@@ -93,14 +96,11 @@ Summary:   Tests for OpenStack Oslo context library
 Requires:  python3-%{pkg_name} = %{version}-%{release}
 
 %description -n python3-%{pkg_name}-tests
-Tests for OpenStack Oslo context library
+%{common_desc2}
 %endif
 
 %description
-The OpenStack Oslo context library has helpers to maintain
-useful information about a request context.
-The request context is usually populated in the
-WSGI pipeline and used by various modules such as logging.
+%{common_desc}
 
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
