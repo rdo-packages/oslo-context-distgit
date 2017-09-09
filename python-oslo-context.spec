@@ -1,4 +1,5 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%global with_doc 1
 
 %global pypi_name oslo.context
 %global pkg_name oslo-context
@@ -50,6 +51,8 @@ Requires:  python-%{pkg_name} = %{version}-%{release}
 %description -n python-%{pkg_name}-tests
 Tests for OpenStack Oslo context library
 
+%if 0%{?with_doc}
+
 %package -n python-%{pkg_name}-doc
 Summary:        Documentation for the OpenStack Oslo context library
 
@@ -59,6 +62,8 @@ BuildRequires:  python-fixtures
 
 %description -n python-%{pkg_name}-doc
 Documentation for the OpenStack Oslo context library.
+
+%endif
 
 # python3
 %if 0%{?with_python3}
@@ -109,10 +114,14 @@ rm -f requirements.txt
 %build
 %py2_build
 
+%if 0%{?with_doc}
+
 # doc
 %{__python2} setup.py build_sphinx
 # Remove the sphinx-build leftovers
 rm -fr doc/build/html/.{doctrees,buildinfo}
+
+%endif
 
 %if 0%{?with_python3}
 %py3_build
@@ -149,9 +158,13 @@ rm -rf .testrepository
 %exclude %{python3_sitelib}/oslo_context/tests
 %endif
 
+%if 0%{?with_doc}
+
 %files -n python-%{pkg_name}-doc
 %license LICENSE
 %doc doc/build/html
+
+%endif
 
 %files -n python-%{pkg_name}-tests
 %license LICENSE
