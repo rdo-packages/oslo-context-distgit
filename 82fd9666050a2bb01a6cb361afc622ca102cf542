@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a961159_2c09f395",
+        "filename": "python-oslo-context.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 424
+      },
+      "writtenOn": "2017-09-10T09:57:17Z",
+      "side": 1,
+      "message": "I think you need:\n\nTests for OpenStack Oslo context library\n\nunder this. Basically just check that the python2 and python3 tests descriptions match, currently they dont",
+      "revId": "82fd9666050a2bb01a6cb361afc622ca102cf542",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
