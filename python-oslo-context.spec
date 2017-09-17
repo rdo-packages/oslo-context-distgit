@@ -25,6 +25,7 @@ Summary:        OpenStack Oslo Context library
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 BuildRequires:  git
+BuildRequires:  openstack-macros
 
 # test dependencies
 BuildRequires:  python-hacking
@@ -104,7 +105,7 @@ WSGI pipeline and used by various modules such as logging.
 
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
-rm -f requirements.txt
+%py_req_cleanup
 
 %build
 %py2_build
