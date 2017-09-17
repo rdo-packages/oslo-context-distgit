@@ -31,6 +31,7 @@ Summary:        OpenStack Oslo Context library
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 BuildRequires:  git
+BuildRequires:  openstack-macros
 
 # test dependencies
 BuildRequires:  python-hacking
@@ -101,7 +102,7 @@ Tests for OpenStack Oslo context library
 
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
-rm -f requirements.txt
+%py_req_cleanup
 
 %build
 %py2_build
