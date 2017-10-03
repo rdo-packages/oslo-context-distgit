@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_df02bfb3",
+        "filename": "python-oslo-context.spec",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2017-10-03T13:49:19Z",
+      "side": 1,
+      "message": "Could we rename this to common_desc_tests? This would match what we\u0027re doing in other reviews",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "f99f7f5ae5fd0a1a79437c59b42f1811a20ac4c1",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
