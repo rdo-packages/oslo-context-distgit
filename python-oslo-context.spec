@@ -36,11 +36,8 @@ BuildRequires:  openstack-macros
 # test dependencies
 BuildRequires:  python-hacking
 BuildRequires:  python-oslotest
-BuildRequires:  python-positional
 
-Requires:       python-babel
 Requires:       python-debtcollector >= 1.2.0
-Requires:       python-positional
 Requires:       python-pbr
 
 %description -n python2-%{pkg_name}
@@ -75,11 +72,8 @@ BuildRequires:  python3-pbr
 # test dependencies
 BuildRequires:  python3-hacking
 BuildRequires:  python3-oslotest
-BuildRequires:  python3-positional
 
-Requires:       python3-babel
 Requires:       python3-debtcollector >= 1.2.0
-Requires:       python3-positional
 Requires:       python3-pbr
 
 %description -n python3-%{pkg_name}
