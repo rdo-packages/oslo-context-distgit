@@ -29,19 +29,16 @@ Summary:        OpenStack Oslo Context library
 %{?python_provide:%python_provide python2-%{pkg_name}}
 
 BuildRequires:  python2-devel
-BuildRequires:  python-pbr
+BuildRequires:  python2-pbr
 BuildRequires:  git
 BuildRequires:  openstack-macros
 
 # test dependencies
-BuildRequires:  python-hacking
-BuildRequires:  python-oslotest
-BuildRequires:  python-positional
+BuildRequires:  python2-hacking
+BuildRequires:  python2-oslotest
 
-Requires:       python-babel
-Requires:       python-debtcollector >= 1.2.0
-Requires:       python-positional
-Requires:       python-pbr
+Requires:       python2-debtcollector >= 1.2.0
+Requires:       python2-pbr
 
 %description -n python2-%{pkg_name}
 %{common_desc}
@@ -57,9 +54,9 @@ Tests for OpenStack Oslo context library
 %package -n python-%{pkg_name}-doc
 Summary:        Documentation for the OpenStack Oslo context library
 
-BuildRequires:  python-sphinx
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-fixtures
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python2-fixtures
 
 %description -n python-%{pkg_name}-doc
 Documentation for the OpenStack Oslo context library.
@@ -75,11 +72,8 @@ BuildRequires:  python3-pbr
 # test dependencies
 BuildRequires:  python3-hacking
 BuildRequires:  python3-oslotest
-BuildRequires:  python3-positional
 
-Requires:       python3-babel
 Requires:       python3-debtcollector >= 1.2.0
-Requires:       python3-positional
 Requires:       python3-pbr
 
 %description -n python3-%{pkg_name}
