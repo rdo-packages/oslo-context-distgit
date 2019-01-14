@@ -3,9 +3,11 @@
 %global pypi_name oslo.context
 %global pkg_name oslo-context
 
-%if 0%{?fedora} >= 24
+%if 0%{?fedora} >= 24 || 0%{?rhel} > 7
 %global with_python3 1
 %endif
+
+%global with_doc 1
 
 %global common_desc \
 The OpenStack Oslo context library has helpers to maintain \
@@ -24,15 +26,15 @@ Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstr
 
 BuildArch:      noarch
 
+BuildRequires:  git
+BuildRequires:  openstack-macros
+
 %package -n python2-%{pkg_name}
 Summary:        OpenStack Oslo Context library
 %{?python_provide:%python_provide python2-%{pkg_name}}
 
 BuildRequires:  python2-devel
 BuildRequires:  python2-pbr
-BuildRequires:  git
-BuildRequires:  openstack-macros
-
 # test dependencies
 BuildRequires:  python2-hacking
 BuildRequires:  python2-oslotest
@@ -51,6 +53,7 @@ Requires:  python-%{pkg_name} = %{version}-%{release}
 %description -n python-%{pkg_name}-tests
 Tests for OpenStack Oslo context library
 
+%if 0%{?with_doc}
 %package -n python-%{pkg_name}-doc
 Summary:        Documentation for the OpenStack Oslo context library
 
@@ -60,6 +63,7 @@ BuildRequires:  python2-fixtures
 
 %description -n python-%{pkg_name}-doc
 Documentation for the OpenStack Oslo context library.
+%endif
 
 # python3
 %if 0%{?with_python3}
@@ -101,10 +105,12 @@ Tests for OpenStack Oslo context library
 %build
 %py2_build
 
+%if 0%{?with_doc}
 # doc
 %{__python2} setup.py build_sphinx
 # Remove the sphinx-build leftovers
 rm -fr doc/build/html/.{doctrees,buildinfo}
+%endif
 
 %if 0%{?with_python3}
 %py3_build
@@ -141,9 +147,11 @@ rm -rf .testrepository
 %exclude %{python3_sitelib}/oslo_context/tests
 %endif
 
+%if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
 %license LICENSE
 %doc doc/build/html
+%endif
 
 %files -n python-%{pkg_name}-tests
 %license LICENSE
