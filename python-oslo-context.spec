@@ -8,7 +8,7 @@
 %endif
 
 Name:           python-%{pkg_name}
-Version:        2.17.1
+Version:        2.17.2
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Context library
 
@@ -166,6 +166,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Thu Apr 18 2019 RDO <dev@lists.rdoproject.org> 2.17.2-1
+- Update to 2.17.2
+
 * Tue Nov 21 2017 RDO <dev@lists.rdoproject.org> 2.17.1-1
 - Update to 2.17.1
 
