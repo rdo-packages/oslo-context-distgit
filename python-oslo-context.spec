@@ -1,12 +1,19 @@
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
+%endif
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
+
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global pypi_name oslo.context
 %global pkg_name oslo-context
-
-%if 0%{?fedora} >= 24 || 0%{?rhel} > 7
-%global with_python3 1
-%endif
-
 %global with_doc 1
 
 %global common_desc \
@@ -29,70 +36,40 @@ BuildArch:      noarch
 BuildRequires:  git
 BuildRequires:  openstack-macros
 
-%package -n python2-%{pkg_name}
+%package -n python%{pyver}-%{pkg_name}
 Summary:        OpenStack Oslo Context library
-%{?python_provide:%python_provide python2-%{pkg_name}}
+%{?python_provide:%python_provide python%{pyver}-%{pkg_name}}
 
-BuildRequires:  python2-devel
-BuildRequires:  python2-pbr
+BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-pbr
 # test dependencies
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-hacking
-BuildRequires:  python2-oslotest
+BuildRequires:  python%{pyver}-fixtures
+BuildRequires:  python%{pyver}-hacking
+BuildRequires:  python%{pyver}-oslotest
 
-Requires:       python2-debtcollector >= 1.2.0
-Requires:       python2-pbr
+Requires:       python%{pyver}-debtcollector >= 1.2.0
+Requires:       python%{pyver}-pbr
 
-%description -n python2-%{pkg_name}
+%description -n python%{pyver}-%{pkg_name}
 %{common_desc}
 
-%package -n python-%{pkg_name}-tests
+%package -n python%{pyver}-%{pkg_name}-tests
 Summary:   Tests for OpenStack Oslo context library
 
-Requires:  python-%{pkg_name} = %{version}-%{release}
+Requires:  python%{pyver}-%{pkg_name} = %{version}-%{release}
 
-%description -n python-%{pkg_name}-tests
+%description -n python%{pyver}-%{pkg_name}-tests
 Tests for OpenStack Oslo context library
 
 %if 0%{?with_doc}
 %package -n python-%{pkg_name}-doc
 Summary:        Documentation for the OpenStack Oslo context library
 
-BuildRequires:  python2-sphinx
-BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python%{pyver}-sphinx
+BuildRequires:  python%{pyver}-openstackdocstheme
 
 %description -n python-%{pkg_name}-doc
 Documentation for the OpenStack Oslo context library.
-%endif
-
-# python3
-%if 0%{?with_python3}
-%package -n python3-%{pkg_name}
-Summary:        OpenStack Oslo Context library
-%{?python_provide:%python_provide python3-%{pkg_name}}
-BuildRequires:  python3-devel
-BuildRequires:  python3-pbr
-
-# test dependencies
-BuildRequires:  python3-hacking
-BuildRequires:  python3-oslotest
-
-Requires:       python3-debtcollector >= 1.2.0
-Requires:       python3-pbr
-
-%description -n python3-%{pkg_name}
-%{common_desc}
-
-%endif
-
-%if 0%{?with_python3}
-%package -n python3-%{pkg_name}-tests
-Summary:   Tests for OpenStack Oslo context library
-
-Requires:  python3-%{pkg_name} = %{version}-%{release}
-
-%description -n python3-%{pkg_name}-tests
-Tests for OpenStack Oslo context library
 %endif
 
 %description
@@ -103,49 +80,27 @@ Tests for OpenStack Oslo context library
 %py_req_cleanup
 
 %build
-%py2_build
+%{pyver_build}
 
 %if 0%{?with_doc}
 # doc
-%{__python2} setup.py build_sphinx
-# Remove the sphinx-build leftovers
+%{pyver_bin} setup.py build_sphinx
+# Remove the sphinx-build-%{pyver} leftovers
 rm -fr doc/build/html/.{doctrees,buildinfo}
 %endif
 
-%if 0%{?with_python3}
-%py3_build
-%endif
-
 %install
-%py2_install
-
-%if 0%{?with_python3}
-%py3_install
-%endif
+%{pyver_install}
 
 %check
-%{__python2} setup.py test
-%if 0%{?with_python3}
-rm -rf .testrepository
-%{__python3} setup.py test
-%endif
+%{pyver_bin} setup.py test
 
-
-%files -n python2-%{pkg_name}
+%files -n python%{pyver}-%{pkg_name}
 %license LICENSE
 %doc README.rst
-%{python2_sitelib}/oslo_context
-%{python2_sitelib}/*.egg-info
-%exclude %{python2_sitelib}/oslo_context/tests
-
-%if 0%{?with_python3}
-%files -n python3-%{pkg_name}
-%license LICENSE
-%doc README.rst
-%{python3_sitelib}/oslo_context
-%{python3_sitelib}/*.egg-info
-%exclude %{python3_sitelib}/oslo_context/tests
-%endif
+%{pyver_sitelib}/oslo_context
+%{pyver_sitelib}/*.egg-info
+%exclude %{pyver_sitelib}/oslo_context/tests
 
 %if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
@@ -153,14 +108,8 @@ rm -rf .testrepository
 %doc doc/build/html
 %endif
 
-%files -n python-%{pkg_name}-tests
+%files -n python%{pyver}-%{pkg_name}-tests
 %license LICENSE
-%{python2_sitelib}/oslo_context/tests
-
-%if 0%{?with_python3}
-%files -n python3-%{pkg_name}-tests
-%license LICENSE
-%{python3_sitelib}/oslo_context/tests
-%endif
+%{pyver_sitelib}/oslo_context/tests
 
 %changelog
