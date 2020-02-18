@@ -84,7 +84,7 @@ Documentation for the OpenStack Oslo context library.
 
 %if 0%{?with_doc}
 # doc
-%{pyver_bin} setup.py build_sphinx
+sphinx-build-%{pyver} -b html doc/source doc/build/html
 # Remove the sphinx-build-%{pyver} leftovers
 rm -fr doc/build/html/.{doctrees,buildinfo}
 %endif
