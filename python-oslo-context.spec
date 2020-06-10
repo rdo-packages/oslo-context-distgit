@@ -23,8 +23,8 @@ The request context is usually populated in the \
 WSGI pipeline and used by various modules such as logging.
 
 Name:           python-%{pkg_name}
-Version:        2.23.0
-Release:        2%{?dist}
+Version:        2.23.1
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Context library
 
 License:        ASL 2.0
@@ -113,6 +113,9 @@ rm -fr doc/build/html/.{doctrees,buildinfo}
 %{pyver_sitelib}/oslo_context/tests
 
 %changelog
+* Wed Jun 10 2020 RDO <dev@lists.rdoproject.org> 2.23.1-1
+- Update to 2.23.1
+
 * Thu Oct 03 2019 Joel Capitao <jcapitao@redhat.com> 2.23.0-2
 - Removed python2 subpackages in no el7 distros
 
