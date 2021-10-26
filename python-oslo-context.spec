@@ -122,3 +122,4 @@ python3 setup.py test
 * Thu Mar 11 2021 RDO <dev@lists.rdoproject.org> 3.2.0-1
 - Update to 3.2.0
 
+# REMOVEME: error caused by commit https://opendev.org/openstack/oslo.context/commit/b124eb7df2617be56a23819f670bd6e054f87ce7
