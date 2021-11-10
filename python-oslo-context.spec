@@ -12,7 +12,7 @@ The request context is usually populated in the \
 WSGI pipeline and used by various modules such as logging.
 
 Name:           python-%{pkg_name}
-Version:        3.0.2
+Version:        3.0.3
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Context library
 
@@ -103,6 +103,9 @@ python3 setup.py test
 %{python3_sitelib}/oslo_context/tests
 
 %changelog
+* Wed Nov 10 2021 RDO <dev@lists.rdoproject.org> 3.0.3-1
+- Update to 3.0.3
+
 * Thu Apr 23 2020 RDO <dev@lists.rdoproject.org> 3.0.2-1
 - Update to 3.0.2
 
