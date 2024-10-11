@@ -18,7 +18,7 @@ Version:        XXX
 Release:        XXX
 Summary:        OpenStack Oslo Context library
 
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            https://launchpad.net/oslo.context
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 # Required for tarball sources verification
